@@ -14,7 +14,6 @@
     ./system.nix
     ./user.nix
     ./wayland.nix
-    ./keyd.nix
     ./password.nix
     ./printing.nix
     ./podman.nix
