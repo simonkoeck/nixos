@@ -18,5 +18,6 @@
     ./printing.nix
     ./podman.nix
     ./ld.nix
+    ./steam.nix
   ];
 }
