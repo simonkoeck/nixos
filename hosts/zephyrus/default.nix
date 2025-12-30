@@ -26,6 +26,11 @@
     power-profiles-daemon.enable = false; # Disable gnome's power profile daemon
     system76-scheduler.settings.cfsProfiles.enable = true; # Better scheduling for CPU cycles
 
+    asusd = {
+      enable = true;
+      enableUserService = true;
+    };
+
     upower = {
       enable = true;
       # Battery thresholds

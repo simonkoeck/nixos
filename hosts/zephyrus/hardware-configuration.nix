@@ -19,6 +19,7 @@
     };
 
   boot.initrd.luks.devices."luks-6afc344e-c768-45fd-9af7-20921e2a782a".device = "/dev/disk/by-uuid/6afc344e-c768-45fd-9af7-20921e2a782a";
+  boot.initrd.luks.devices."luks-6afc344e-c768-45fd-9af7-20921e2a782a".crypttabExtraOpts = [ "tries=10" ];
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/6149-58DA";

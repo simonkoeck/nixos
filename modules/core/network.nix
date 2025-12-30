@@ -1,5 +1,6 @@
 { pkgs, host, ... }:
 {
+
   networking = {
     # Set's the device hostname
     hostName = "${host}";
@@ -19,8 +20,26 @@
     # These options are unnecessary when managing DNS ourselves
     useDHCP = false;
     dhcpcd.enable = false;
+    # extraHosts =
+    # ''
+    #   10.0.0.1 otark-db.mysql.database.azure.com
+    # '';
+  };
+
+
+  services.openvpn.servers = {
+    otark = { 
+      # Use 'config' to point to your existing .ovpn file
+      config = "config /root/vpn/otark.ovpn";
+      
+      autoStart = true;
+      updateResolvConf = false; 
+    };
   };
 
   # GUI & tray for wifi
-  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
+  environment.systemPackages = with pkgs; [
+    networkmanagerapplet
+    dig
+  ];
 }
