@@ -37,6 +37,10 @@ Plug 'echasnovski/mini.move'
 Plug 'simeng/vim-imba'
 Plug 'augmentcode/augment.vim'
 Plug 'lambdalisue/vim-suda'
+Plug 'karb94/neoscroll.nvim'
+Plug 'stevearc/conform.nvim'
 Plug 'wakatime/vim-wakatime'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'OXY2DEV/markview.nvim'
 
 call plug#end()

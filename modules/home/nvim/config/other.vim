@@ -59,7 +59,6 @@ require('telescope').setup{
   },
 }
 
-
 require("oil").setup({
   default_file_explorer = true,
   columns = {
@@ -85,9 +84,9 @@ require("oil").setup({
 
 require("supermaven-nvim").setup({
   keymaps = {
-    accept_suggestion = "<S-F12>",
+    accept_suggestion = "<C-j>",
     clear_suggestion = "<C-]>",
-    accept_word = "<C-j>",
+    accept_word = "<C-]>",
   },
   log_level = "off",
 })
@@ -102,3 +101,54 @@ require('nvim-ts-autotag').setup({
   },
 })
 require('mini.move').setup()
+
+require('neoscroll').setup({
+  mappings = {                 -- Keys to be mapped to their corresponding default scrolling animation
+    '<C-u>', '<C-d>',
+    '<C-b>', '<C-f>',
+    '<C-y>', '<C-e>',
+    'zt', 'zz', 'zb',
+  },
+  hide_cursor = true,          -- Hide cursor while scrolling
+  stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+  respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+  cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+  duration_multiplier = 0.35,   -- Global duration multiplier
+  easing = 'linear',           -- Default easing function
+  pre_hook = nil,              -- Function to run before the scrolling animation starts
+  post_hook = nil,             -- Function to run after the scrolling animation ends
+  performance_mode = false,    -- Disable "Performance Mode" on all buffers.
+  ignored_events = {           -- Events ignored while scrolling
+      'WinScrolled', 'CursorMoved'
+  },
+})
+
+vim.lsp.config('ruff', {
+})
+vim.lsp.enable('ruff')
+
+require("conform").setup({
+  formatters_by_ft = {
+    lua = { "stylua" },
+    -- Conform will run multiple formatters sequentially
+    python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+    -- You can customize some of the format options for the filetype (:help conform.format)
+    rust = { "rustfmt", lsp_format = "fallback" },
+    -- Conform will run the first available formatter
+    javascript = { "prettierd", "prettier", stop_after_first = true },
+  },
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function(args)
+    require("conform").format({ bufnr = args.buf })
+  end,
+})
+
+require('nvim-ts-autotag').setup({
+  aliases = {
+  }
+})
+
+

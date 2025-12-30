@@ -36,19 +36,21 @@ nnoremap <silent> <leader>fg <cmd>Telescope live_grep<CR>
 nnoremap <silent> <leader>fh <cmd>Telescope help_tags<CR>
 nnoremap <silent> <leader>fj <cmd>Telescope buffers<CR>
 nnoremap <silent> <leader>fk <cmd>Telescope file_browser<CR>
-nnoremap <silent> <leader>gg :G<CR>
+nnoremap <silent> <leader>gg :tab G<CR>
+nnoremap <silent> <leader>gb :Git blame<CR>
 nnoremap <silent> <leader>gc :Telescope conventional_commits<CR>
+nnoremap <silent> <leader>ge :Telescope gitmoji<CR>
 nnoremap <silent> <leader>ga :G add .<CR>
 nnoremap <silent> <leader>gp :G push<CR>
 nnoremap <silent> <leader>y :!xdg-open %<CR><CR>
 nnoremap <silent> <leader>x :!xdg-open %:h<CR><CR>
-nnoremap <silent> <leader>c :!code %<CR><CR>
 nnoremap <silent> <leader>fl :Oil --float<CR>
 nnoremap <silent> <Esc> :call coc#float#close_all() <CR>
 nnoremap <silent> <S-k> :call CocAction('doHover')<CR>
 nnoremap <silent> <leader>bf <cmd>Telescope buffers<CR>
 nnoremap <silent> <leader>bb <cmd>Telescope buffers<CR>
 nnoremap <silent> <leader>bd :BufferClose<CR>
+nnoremap <silent> <leader>bc :bufdo bd<CR><CR>
 nnoremap <silent> <leader>ba :call DeleteInactiveBufs()<CR>
 nnoremap <silent> <leader>bl :BufferPrevious<CR>
 nnoremap <silent> <leader>bn :BufferNext<cr>
