@@ -17,6 +17,8 @@
     blinkdisk
     # Slack
     slack
+    # Liquid Launcher
+    liquidlauncher
   ];
 
   home.file = {
