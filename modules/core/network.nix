@@ -32,7 +32,7 @@
       # Use 'config' to point to your existing .ovpn file
       config = "config /root/vpn/otark.ovpn";
       
-      autoStart = true;
+      autoStart = false;
       updateResolvConf = false; 
     };
   };

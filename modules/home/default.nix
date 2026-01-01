@@ -24,5 +24,6 @@
     ./alacritty # terminal
     ./tmux # terminal splits
     ./chromium.nix # chromium
+    ./minecraft.nix # minecraft
   ];
 }

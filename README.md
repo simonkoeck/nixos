@@ -19,6 +19,13 @@ swapDevices = [
 ];
 ```
 
+2. Add tries argument to luks encrtyption
+
+```nix
+boot.initrd.luks.devices."luks-YOUR_LUKS_ID".device = "/dev/disk/by-uuid/YOUR_LUKS_ID";
+boot.initrd.luks.devices."luks-YOUR_LUKS_ID".crypttabExtraOpts = [ "tries=10" ];
+```
+
 3. Copy the hardware configuration to `/etc/nixos/hardware-configuration.nix`
 
 ```bash
@@ -32,3 +39,7 @@ sudo nixos-rebuild boot --flake .#zephyrus
 sudo nixos-rebuild switch --flake .#zephyrus
 reboot
 ```
+
+## Credits
+
+Credit to [poeck/nixos](https://github.com/poeck/nixos) for the base configuration.

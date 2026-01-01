@@ -11,6 +11,7 @@
         "--enable-features=TouchpadOverscrollHistoryNavigation"
       ];
     };
+
     extensions =
     let
       createChromiumExtensionFor = browserVersion: { id, sha256, version }:
@@ -39,5 +40,6 @@
             version = "8.11.22.27";
           })
         ];
+
   };
 }
