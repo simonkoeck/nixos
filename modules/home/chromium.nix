@@ -39,6 +39,18 @@
             sha256 = "sha256:1ingz45cv6zvjkkrjdqs9fj4rzqj6ng0v1mc6mq6sczhj40m20kv";
             version = "8.11.22.27";
           })
+          (createChromiumExtension {
+            # Chrome Remote Desktop 
+            id = "inomeogfingihgjfjlpeplalcfajhgai";
+            sha256 = "sha256:18ldzrj5hcasi8f0prv0jbr6i6nq3k4v5qyvwajnbzzybqq8369q";
+            version = "2.1";
+          })
+          (createChromiumExtension {
+            # Authfill 
+            id = "doanledhbgobnfeicgdchpilkjkbjddg";
+            sha256 = "sha256:0ssb6ksvqng3px5rgma718v0zwnjb5xgckxvamdzp5kd34g3x9sk";
+            version = "1.0.0";
+          })
         ];
 
   };

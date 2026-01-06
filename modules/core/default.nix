@@ -19,5 +19,6 @@
     ./podman.nix
     ./ld.nix
     ./steam.nix
+    ./burpsuite.nix
   ];
 }

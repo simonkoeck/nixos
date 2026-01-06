@@ -19,6 +19,10 @@
     slack
     # Liquid Launcher
     liquidlauncher
+    # VLC (media player)
+    vlc
+    # Geary 
+    geary
   ];
 
   home.file = {
