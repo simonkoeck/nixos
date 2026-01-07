@@ -23,6 +23,8 @@
     vlc
     # Geary 
     geary
+    # Insomnia
+    insomnia
   ];
 
   home.file = {
