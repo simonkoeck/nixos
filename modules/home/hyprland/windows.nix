@@ -27,6 +27,12 @@
       "opaque,class:^()$,title:^()$"
       "noshadow,class:^()$,title:^()$"
       "noblur,class:^()$,title:^()$"
+
+      # Custom window rules
+      # Gather
+      "workspace special:gather, class:(chrome-lpiiknacbombkbjcmblabngmfnbahijj-Profile_1)"
+      # YouTube Music
+      "workspace special:music, class:(chrome-cinhimbnkkaeohfgghhklpknlkffjgod-Default)"
     ];
 
     layerrule = [

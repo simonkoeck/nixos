@@ -48,11 +48,7 @@
       "$mainMod, U, focusmonitor, 2"
       "$mainMod, O, focusmonitor, 0"
 
-      # Example special workspace (scratchpad)
-      "$mainMod, m, togglespecialworkspace, magic"
-      "$mainMod SHIFT, m, movetoworkspace, special:magic"
-
-      "$mainMod, n, exec, swaync-client -t"
+      "$mainMod, b, exec, swaync-client -t"
 
       # Scroll through existing workspaces with mainMod + scroll
       "$mainMod, mouse_down, workspace, e+1"
@@ -64,6 +60,10 @@
 
       # Toggle waybar
       "$mainMod, Space, exec, killall -SIGUSR1 .waybar-wrapped"
+
+      # Special workspace keybinds
+      "$mainMod, m, togglespecialworkspace, music"
+      "$mainMod, n, togglespecialworkspace, gather"
     ];
 
     bindel = [
