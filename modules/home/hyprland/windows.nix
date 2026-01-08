@@ -30,9 +30,9 @@
 
       # Custom window rules
       # Gather
-      "workspace special:gather, class:(chrome-lpiiknacbombkbjcmblabngmfnbahijj-Profile_1)"
+      "workspace special:gather, class:(Gather)"
       # YouTube Music
-      "workspace special:music, class:(chrome-cinhimbnkkaeohfgghhklpknlkffjgod-Default)"
+      "workspace special:music, initialTitle:(YouTube Music)"
     ];
 
     layerrule = [

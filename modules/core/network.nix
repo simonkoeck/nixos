@@ -20,10 +20,10 @@
     # These options are unnecessary when managing DNS ourselves
     useDHCP = false;
     dhcpcd.enable = false;
-    # extraHosts =
-    # ''
-    #   10.0.0.1 otark-db.mysql.database.azure.com
-    # '';
+    extraHosts =
+    ''
+      10.20.50.4 otark-db.mysql.database.azure.com
+    '';
   };
 
 

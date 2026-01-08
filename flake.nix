@@ -1,5 +1,5 @@
 {
-  description = "FrostPhoenix's nixos configuration";
+  description = "Simon's nixos configuration";
 
   inputs = {
     # Nix
@@ -15,10 +15,15 @@
     minegrub.url = "github:Lxtharia/minegrub-theme";
     mineplymouth.url = "github:nikp123/minecraft-plymouth-theme";
     hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    gather-linux.url = "github:simonkoeck/gather-linux";
   };
 
   outputs =
-    { nixpkgs, self, ... }@inputs:
+    { nixpkgs, self, gather-linux, ... }@inputs:
     let
       username = "simon";
       system = "x86_64-linux";
@@ -27,10 +32,19 @@
       nixosConfigurations = {
         zephyrus = nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/zephyrus ];
+          modules = [
+            ./hosts/zephyrus
+            {
+              # 1. Enable unfree packages for your system
+              nixpkgs.config.allowUnfree = true;
+
+              # 2. Overlay the firefox-addons onto your system pkgs
+              nixpkgs.overlays = [ inputs.firefox-addons.overlays.default ];
+            }
+          ];
           specialArgs = {
             host = "zephyrus";
-            inherit self inputs username;
+            inherit self inputs username gather-linux;
           };
         };
       };

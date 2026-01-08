@@ -20,5 +20,8 @@
     ./ld.nix
     ./steam.nix
     ./burpsuite.nix
+    ./podman-desktop.nix
+    ./firefoxpwa.nix
+    ./gather.nix
   ];
 }
