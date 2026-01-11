@@ -64,6 +64,11 @@
       # Special workspace keybinds
       "$mainMod, m, togglespecialworkspace, music"
       "$mainMod, n, togglespecialworkspace, gather"
+
+      # Audio Hotkeys
+      "$mainMod ALT, 1, exec, change-audio headphones" 
+      "$mainMod ALT, 2, exec, change-audio box" 
+      "$mainMod ALT, 3, exec, change-audio internal" 
     ];
 
     bindel = [
