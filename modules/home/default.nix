@@ -23,7 +23,6 @@
     ./zsh # shell
     ./alacritty # terminal
     ./tmux # terminal splits
-    ./minecraft.nix # minecraft
     ./firefox.nix # firefox
   ];
 }

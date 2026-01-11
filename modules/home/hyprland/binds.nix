@@ -45,8 +45,8 @@
       "CTRL SHIFT, Space, exec, 1password --quick-access"
 
       "$mainMod, I, focusmonitor, 1"
-      "$mainMod, U, focusmonitor, 2"
-      "$mainMod, O, focusmonitor, 0"
+      "$mainMod, U, focusmonitor, 0"
+      "$mainMod, O, focusmonitor, 2"
 
       "$mainMod, b, exec, swaync-client -t"
 
