@@ -1,4 +1,27 @@
 { pkgs, lib, inputs, nixpkgs, ... }: 
+let
+  commonSettings = {
+    "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+    "browser.urlbar.suggest.quicksuggest.nononsense" = true;
+    "media.ffmpeg.vaapi.enabled" = true;
+    "devtools.netmonitor.persistlog" = true;
+    "browser.aboutConfig.showWarning" = false;
+    "browser.compactmode.show" = true;
+    "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+  };
+
+  otarkTheme = ''
+    #navigator-toolbox { background-color: #0f2b18 !important; border-bottom: 1px solid #1a4a2a !important; }
+    .tab-background[selected="true"] { background-color: #1a4a2a !important; background-image: none !important; }
+    #urlbar-background { background-color: #0d1f12 !important; }
+  '';
+
+  bugBountyTheme = ''
+    #navigator-toolbox { background-color: #3b1e08 !important; border-bottom: 1px solid #663300 !important; }
+    .tab-background[selected="true"] { background-color: #663300 !important; background-image: none !important; }
+    #urlbar-background { background-color: #261205 !important; }
+  '';
+in
 {
   programs.firefox = {
     enable = true;
@@ -8,13 +31,16 @@
         DisableTelemetry = true;
         DisableFirefoxStudies = true;
         DisablePocket = true;
-        DisableFirefoxAccounts = true; 
+        DisableFirefoxAccounts = true;
         DisableAccounts = true;
         DisableFirefoxScreenshots = true;
         OverrideFirstRunPage = "";
         OverridePostUpdatePage = "";
         DontCheckDefaultBrowser = true;
         SearchBar = "unified"; 
+        
+        Certificates = {};
+
         EnableTrackingProtection = {
           Value = true;
           Locked = true;
@@ -22,6 +48,7 @@
           Fingerprinting = true;
         };
         HttpsOnlyMode = "enabled"; 
+        
         UserMessaging = {
           ExtensionRecommendations = false;
           FeatureRecommendations = false;
@@ -29,6 +56,7 @@
           SkipOnboarding = true;
           MoreFromMozilla = false;
         };
+        
         FirefoxHome = {
           Search = true;
           TopSites = true; 
@@ -38,12 +66,14 @@
           SponsoredPocket = false;
           Snippets = false; 
         };
+        
         SearchSuggestEnabled = true; 
         FirefoxSuggest = {
            WebSuggestions = false;
            SponsoredSuggestions = false;
            ImproveSuggest = false;
         };
+
         PictureInPicture = {
             Enabled = false;
         };
@@ -53,9 +83,39 @@
         id = 0;
         name = "Personal";
         isDefault = true;
-        settings = {
+        settings = commonSettings // {
           "browser.toolbars.bookmarks.visibility" = "always";
+          "privacy.userContext.enabled" = true;
+          "privacy.userContext.ui.enabled" = true;
         };
+
+        search = {
+            force = true;
+            default = "Google";
+            engines = {
+                "Nix Packages" = {
+                    urls = [{ template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; }];
+                    iconUpdateURL = "https://nixos.org/favicon.png";
+                    updateInterval = 24 * 60 * 60 * 1000;
+                    definedAliases = [ "@np" "np" ];
+                };
+                "NixOS Options" = {
+                    urls = [{ template = "https://search.nixos.org/options?channel=unstable&query={searchTerms}"; }];
+                    iconUpdateURL = "https://nixos.org/favicon.png";
+                    updateInterval = 24 * 60 * 60 * 1000;
+                    definedAliases = [ "@no" "no" ];
+                };
+                "Home Manager Options" = {
+                    urls = [{ template = "https://home-manager-options.extranix.com/?query={searchTerms}"; }];
+                    iconUpdateURL = "https://home-manager-options.extranix.com/images/favicon.png";
+                    updateInterval = 24 * 60 * 60 * 1000;
+                    definedAliases = [ "@hm" "hm" ];
+                };
+                "Bing".metaData.hidden = true;
+                "eBay".metaData.hidden = true;
+            };
+        };
+
         bookmarks = {
           force = true;
           settings = [
@@ -66,8 +126,8 @@
                 {
                   name = "GitHub";
                   bookmarks = [
-                     { name = "ShipSecure"; url = "https://github.com/shipsecure-labs"; }
-                     { name = "simonkoeck"; url = "https://github.com/simonkoeck"; }
+                      { name = "ShipSecure"; url = "https://github.com/shipsecure-labs"; }
+                      { name = "simonkoeck"; url = "https://github.com/simonkoeck"; }
                   ];
                 }
                 { name = "YouTube"; url = "https://youtube.com/"; }
@@ -85,15 +145,13 @@
                 privacy-badger
             ];
         };
-        settings = {
-           "browser.urlbar.suggest.quicksuggest.sponsored" = false;
-           "devtools.netmonitor.persistlog" = true;
-           "media.ffmpeg.vaapi.enabled" = true;
-        };
     };
+
     profiles.otark = {
         id = 1;
         name = "Otark";
+        settings = commonSettings;
+        userChrome = otarkTheme;
         extensions =  {
             packages = with pkgs.firefox-addons; [
                 ublock-origin
@@ -101,22 +159,22 @@
                 pwas-for-firefox
             ];
         };
-        settings = {
-           "browser.urlbar.suggest.quicksuggest.sponsored" = false;
-           "devtools.netmonitor.persistlog" = true;
-        };
     };
+
     profiles.bugbounty = {
         id = 2; 
         name = "BugBounty Hunting";
+        settings = commonSettings // {
+             "security.tls.version.min" = 1;
+             "network.trr.mode" = 5; 
+        };
+        userChrome = bugBountyTheme;
         extensions =  {
             packages = with pkgs.firefox-addons; [
                 onepassword-password-manager
+                foxyproxy-standard
+                wappalyzer
             ];
-        };
-        settings = {
-           "browser.urlbar.suggest.quicksuggest.sponsored" = false;
-           "devtools.netmonitor.persistlog" = true;
         };
     };
 
@@ -124,7 +182,6 @@
   };
 
   xdg.desktopEntries = {
-    
     firefox-otark = {
       name = "Firefox Otark";
       genericName = "Web Browser";
