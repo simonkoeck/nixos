@@ -84,4 +84,27 @@
 
     nativeMessagingHosts = [ pkgs.firefoxpwa ];
   };
+
+  xdg.desktopEntries = {
+    
+    firefox-otark = {
+      name = "Firefox Otark";
+      genericName = "Web Browser";
+      exec = "firefox -P Otark %U";
+      icon = "firefox";
+      terminal = false;
+      categories = [ "Network" "WebBrowser" ];
+    };
+
+    firefox-bugbounty = {
+      name = "Firefox BugBounty";
+      genericName = "Web Browser";
+      # FIX BELOW: Use escaped double quotes \" instead of single quotes '
+      exec = "firefox -P \"BugBounty Hunting\" %U"; 
+      icon = "firefox";
+      terminal = false;
+      # Removed deprecated "Application" to silence the warning
+      categories = [ "Network" "WebBrowser" ];
+    };
+  };
 }
