@@ -7,22 +7,46 @@
     policies = {
         DisableTelemetry = true;
         DisableFirefoxStudies = true;
+        DisablePocket = true;
+        DisableFirefoxAccounts = true; 
+        DisableAccounts = true;
+        DisableFirefoxScreenshots = true;
+        OverrideFirstRunPage = "";
+        OverridePostUpdatePage = "";
+        DontCheckDefaultBrowser = true;
+        SearchBar = "unified"; 
         EnableTrackingProtection = {
           Value = true;
           Locked = true;
           Cryptomining = true;
           Fingerprinting = true;
         };
-        DisablePocket = true;
-        DisableFirefoxAccounts = true;
-        DisableAccounts = true;
-        DisableFirefoxScreenshots = true;
-        OverrideFirstRunPage = "";
-        OverridePostUpdatePage = "";
-        DontCheckDefaultBrowser = true;
-        # DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
-        # DisplayMenuBar = "default-off"; # alternatives: "always", "never" or "default-on"
-        SearchBar = "unified"; # alternative: "separate"
+        HttpsOnlyMode = "enabled"; 
+        UserMessaging = {
+          ExtensionRecommendations = false;
+          FeatureRecommendations = false;
+          UrlbarInterventions = false;
+          SkipOnboarding = true;
+          MoreFromMozilla = false;
+        };
+        FirefoxHome = {
+          Search = true;
+          TopSites = true; 
+          SponsoredTopSites = false; 
+          Highlights = false;
+          Pocket = false;
+          SponsoredPocket = false;
+          Snippets = false; 
+        };
+        SearchSuggestEnabled = true; 
+        FirefoxSuggest = {
+           WebSuggestions = false;
+           SponsoredSuggestions = false;
+           ImproveSuggest = false;
+        };
+        PictureInPicture = {
+            Enabled = false;
+        };
     };
 
     profiles.personal = {
@@ -58,7 +82,13 @@
                 pwas-for-firefox
                 sponsorblock
                 youtube-shorts-block
+                privacy-badger
             ];
+        };
+        settings = {
+           "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+           "devtools.netmonitor.persistlog" = true;
+           "media.ffmpeg.vaapi.enabled" = true;
         };
     };
     profiles.otark = {
@@ -71,6 +101,10 @@
                 pwas-for-firefox
             ];
         };
+        settings = {
+           "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+           "devtools.netmonitor.persistlog" = true;
+        };
     };
     profiles.bugbounty = {
         id = 2; 
@@ -79,6 +113,10 @@
             packages = with pkgs.firefox-addons; [
                 onepassword-password-manager
             ];
+        };
+        settings = {
+           "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+           "devtools.netmonitor.persistlog" = true;
         };
     };
 
@@ -99,11 +137,9 @@
     firefox-bugbounty = {
       name = "Firefox BugBounty";
       genericName = "Web Browser";
-      # FIX BELOW: Use escaped double quotes \" instead of single quotes '
       exec = "firefox -P \"BugBounty Hunting\" %U"; 
       icon = "firefox";
       terminal = false;
-      # Removed deprecated "Application" to silence the warning
       categories = [ "Network" "WebBrowser" ];
     };
   };
