@@ -120,8 +120,6 @@ in
         isDefault = true;
         settings = commonSettings // {
           "browser.toolbars.bookmarks.visibility" = "always";
-          "privacy.userContext.enabled" = true;
-          "privacy.userContext.ui.enabled" = true;
         };
 
         search = sharedSearch;
@@ -159,16 +157,30 @@ in
     profiles.otark = {
         id = 1;
         name = "Otark";
-        settings = commonSettings;
+        settings = commonSettings // {
+          "browser.toolbars.bookmarks.visibility" = "always";
+        };
         userChrome = otarkTheme;
         
-        search = sharedSearch;
-        
+        search = sharedSearch;        
+
+        bookmarks = {
+          force = true;
+          settings = [
+            {
+              name = "Toolbar";
+              toolbar = true; 
+              bookmarks = [
+                { name = "Otark GitLab"; url = "https://gitlab.otark.team/platform/otark/-/commits/dev"; }
+                { name = "Jira"; url = "https://otark.atlassian.net/jira/software/projects/OT/boards/2"; }
+              ];
+            }
+          ];
+        };
         extensions =  {
             packages = with pkgs.firefox-addons; [
                 ublock-origin
                 onepassword-password-manager
-                pwas-for-firefox
             ];
         };
     };
