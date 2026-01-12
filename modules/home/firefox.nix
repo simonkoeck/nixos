@@ -10,7 +10,6 @@ let
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
   };
 
-  # --- 1. DEFINE SHARED SEARCH CONFIG HERE ---
   sharedSearch = {
     force = true;
     default = "google";
@@ -118,7 +117,6 @@ in
           "privacy.userContext.ui.enabled" = true;
         };
 
-        # --- 2. APPLY SHARED SEARCH HERE ---
         search = sharedSearch;
 
         bookmarks = {
@@ -158,7 +156,6 @@ in
         settings = commonSettings;
         userChrome = otarkTheme;
         
-        # --- 3. APPLY SHARED SEARCH HERE ---
         search = sharedSearch;
         
         extensions =  {
@@ -179,7 +176,6 @@ in
         };
         userChrome = bugBountyTheme;
         
-        # --- 4. APPLY SHARED SEARCH HERE ---
         search = sharedSearch;
         
         extensions =  {
