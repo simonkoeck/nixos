@@ -8,6 +8,13 @@ let
     "browser.aboutConfig.showWarning" = false;
     "browser.compactmode.show" = true;
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+
+    "gfx.webrender.all" = true;
+    "browser.cache.disk.enable" = false;
+    "browser.cache.memory.enable" = true;
+    "browser.cache.memory.capacity" = 524288;
+    "browser.sessionstore.interval" = 1800000; # 30 mins in ms
+    "toolkit.cosmeticAnimations.enabled" = false;
   };
 
   sharedSearch = {
@@ -145,7 +152,6 @@ in
                 pwas-for-firefox
                 sponsorblock
                 youtube-shorts-block
-                privacy-badger
             ];
         };
     };
