@@ -10,6 +10,35 @@ let
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
   };
 
+  # --- 1. DEFINE SHARED SEARCH CONFIG HERE ---
+  sharedSearch = {
+    force = true;
+    default = "google";
+    engines = {
+      "Nix Packages" = {
+        urls = [{ template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; }];
+        icon = "https://nixos.org/favicon.png";
+        updateInterval = 24 * 60 * 60 * 1000;
+        definedAliases = [ "@np" "np" ];
+      };
+      "NPM" = {
+        urls = [{ template = "https://www.npmjs.com/search?q={searchTerms}"; }];
+        icon = "https://static-production.npmjs.com/58a19602036db1daee0d7863c94673a4.png";
+        updateInterval = 24 * 60 * 60 * 1000;
+        definedAliases = [ "@npm" "npm" ];
+      };
+      "GitHub" = {
+        urls = [{ template = "https://github.com/search?q={searchTerms}&type=repositories"; }];
+        icon = "https://github.githubassets.com/favicons/favicon.svg";
+        updateInterval = 24 * 60 * 60 * 1000;
+        definedAliases = [ "@gh" "gh" ];
+      };
+
+      "bing".metaData.hidden = true;
+      "ebay".metaData.hidden = true;
+    };
+  };
+
   otarkTheme = ''
     #navigator-toolbox { background-color: #0f2b18 !important; border-bottom: 1px solid #1a4a2a !important; }
     .tab-background[selected="true"] { background-color: #1a4a2a !important; background-image: none !important; }
@@ -89,32 +118,8 @@ in
           "privacy.userContext.ui.enabled" = true;
         };
 
-        search = {
-            force = true;
-            default = "Google";
-            engines = {
-                "Nix Packages" = {
-                    urls = [{ template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}"; }];
-                    iconUpdateURL = "https://nixos.org/favicon.png";
-                    updateInterval = 24 * 60 * 60 * 1000;
-                    definedAliases = [ "@np" "np" ];
-                };
-                "NixOS Options" = {
-                    urls = [{ template = "https://search.nixos.org/options?channel=unstable&query={searchTerms}"; }];
-                    iconUpdateURL = "https://nixos.org/favicon.png";
-                    updateInterval = 24 * 60 * 60 * 1000;
-                    definedAliases = [ "@no" "no" ];
-                };
-                "Home Manager Options" = {
-                    urls = [{ template = "https://home-manager-options.extranix.com/?query={searchTerms}"; }];
-                    iconUpdateURL = "https://home-manager-options.extranix.com/images/favicon.png";
-                    updateInterval = 24 * 60 * 60 * 1000;
-                    definedAliases = [ "@hm" "hm" ];
-                };
-                "Bing".metaData.hidden = true;
-                "eBay".metaData.hidden = true;
-            };
-        };
+        # --- 2. APPLY SHARED SEARCH HERE ---
+        search = sharedSearch;
 
         bookmarks = {
           force = true;
@@ -152,6 +157,10 @@ in
         name = "Otark";
         settings = commonSettings;
         userChrome = otarkTheme;
+        
+        # --- 3. APPLY SHARED SEARCH HERE ---
+        search = sharedSearch;
+        
         extensions =  {
             packages = with pkgs.firefox-addons; [
                 ublock-origin
@@ -169,6 +178,10 @@ in
              "network.trr.mode" = 5; 
         };
         userChrome = bugBountyTheme;
+        
+        # --- 4. APPLY SHARED SEARCH HERE ---
+        search = sharedSearch;
+        
         extensions =  {
             packages = with pkgs.firefox-addons; [
                 onepassword-password-manager
