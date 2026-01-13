@@ -1,5 +1,6 @@
 { pkgs, lib, inputs, nixpkgs, ... }: 
 let
+
   commonSettings = {
     "browser.urlbar.suggest.quicksuggest.sponsored" = false;
     "browser.urlbar.suggest.quicksuggest.nononsense" = true;
@@ -56,6 +57,11 @@ let
     .tab-background[selected="true"] { background-color: #663300 !important; background-image: none !important; }
     #urlbar-background { background-color: #261205 !important; }
   '';
+
+  customAddons = pkgs.callPackage ./firefox-addons.nix {
+    inherit lib;
+    inherit (inputs.firefox-addons.lib."x86_64-linux") buildFirefoxXpiAddon;
+  };
 in
 {
   programs.firefox = {
@@ -208,7 +214,7 @@ in
             packages = with pkgs.firefox-addons; [
                 onepassword-password-manager
                 wappalyzer
-            ];
+            ] ++ (with customAddons; [ hacktools ]);
         };
     };
 
@@ -217,7 +223,7 @@ in
 
   xdg.desktopEntries = {
     firefox-otark = {
-      name = "Firefox Otark";
+      name = "Firefox (Otark)";
       genericName = "Web Browser";
       exec = "firefox -P Otark %U";
       icon = "firefox";
@@ -226,7 +232,7 @@ in
     };
 
     firefox-bugbounty = {
-      name = "Firefox BugBounty";
+      name = "Firefox (Bug Bounty)";
       genericName = "Web Browser";
       exec = "firefox -P \"BugBounty Hunting\" %U"; 
       icon = "firefox";
