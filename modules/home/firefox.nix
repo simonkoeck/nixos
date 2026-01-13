@@ -191,6 +191,14 @@ in
         settings = commonSettings // {
              "security.tls.version.min" = 1;
              "network.trr.mode" = 5; 
+
+              # Burp Suite / Manual Proxy Settings
+             "network.proxy.type" = 1;             # 1 = Manual proxy configuration
+             "network.proxy.http" = "127.0.0.1";
+             "network.proxy.http_port" = 8080;
+             "network.proxy.ssl" = "127.0.0.1";    # Usually required for HTTPS traffic
+             "network.proxy.ssl_port" = 8080;
+             "network.proxy.share_proxy_settings" = true; # Use this proxy for all protocols
         };
         userChrome = bugBountyTheme;
         
@@ -199,7 +207,6 @@ in
         extensions =  {
             packages = with pkgs.firefox-addons; [
                 onepassword-password-manager
-                foxyproxy-standard
                 wappalyzer
             ];
         };
