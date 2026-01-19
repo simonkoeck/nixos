@@ -156,7 +156,7 @@ in
                 pwas-for-firefox
                 sponsorblock
                 youtube-shorts-block
-            ];
+            ] ++ (with customAddons; [ authfill ]);
         };
     };
 

@@ -3,10 +3,23 @@
   programs.git = {
     enable = true;
 
+    includes = [
+      {
+        condition = "gitdir:~/dev/otark/"; 
+        contents = {
+          user = {
+            email = "simon@otark.com";
+          };
+        };
+      }
+    ];
+
     settings = {
+      # 2. Merged User Configuration (Global Default)
       user = {
         name = "Simon Koeck";
         email = "simon@koeck.dev";
+        signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJKCz0ab5qrUfXHOPgktyPcxMVAuATShvdkE3OJtrkwR simon@zephyrus";
       };
 
       init.defaultBranch = "main";
@@ -14,7 +27,7 @@
       diff.colorMoved = "default";
       color.ui = true;
 
-      # GPG signing section
+      # GPG/SSH Signing Setup
       gpg = {
         format = "ssh";
       };
@@ -23,9 +36,6 @@
       };
       commit = {
         gpgsign = true;
-      };
-      user = {
-        signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJKCz0ab5qrUfXHOPgktyPcxMVAuATShvdkE3OJtrkwR simon@zephyrus";
       };
     };
   };
