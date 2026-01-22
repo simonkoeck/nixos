@@ -42,5 +42,6 @@ Plug 'stevearc/conform.nvim'
 Plug 'wakatime/vim-wakatime'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'OXY2DEV/markview.nvim'
+Plug 'NickvanDyke/opencode.nvim'
 
 call plug#end()

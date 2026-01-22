@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     ripgrep
+    lsof
     ffmpeg
     file
     jq
@@ -21,5 +22,6 @@
     nodejs_24
     pnpm
     go
+    opencode
   ];
 }
