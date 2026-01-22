@@ -177,29 +177,13 @@
         };
       };
 
-      nvim-cmp = {
+      blink-cmp = {
         enable = true;
-        autoEnableSources = true;
-        settings.sources = [
-          { name = "nvim_lsp"; }
-          { name = "luasnip"; }
-          { name = "path"; }
-          { name = "buffer"; }
-        ];
-        settings.snippet = {
-          expand = "function(args) require('luasnip').lsp_expand(args.body) end";
-        };
-        settings.mapping = {
-          "<CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
-          "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i', 's'})";
-          "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i', 's'})";
-        };
-        settings.completion = {
-          completeopt = "menu,menuone,noinsert,noselect";
-          keyword_length = 1;
-        };
-        settings.view = {
-          entries = "custom";
+        settings = {
+          keymap = { preset = "default"; };
+          appearance.nerd_font_variant = "mono";
+          completion.documentation.auto_show = false;
+          sources.default = [ "lsp" "path" "snippets" "buffer" ];
         };
       };
 
@@ -246,6 +230,14 @@
         };
       })
       friendly-snippets
+    ];
+
+    extraPackages = with pkgs; [
+      typescript-language-server
+      tailwindcss-language-server
+      nixd
+      vscode-langservers-extracted
+      eslint
     ];
   };
 }

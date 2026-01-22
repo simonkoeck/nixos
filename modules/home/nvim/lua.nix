@@ -4,6 +4,9 @@
     -- Load snippets
     require("luasnip.loaders.from_vscode").lazy_load()
 
+    -- Set up capabilities for blink.cmp
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
+
     -- Format on save
     vim.api.nvim_create_autocmd("BufWritePre", {
       pattern = "*",
@@ -13,8 +16,9 @@
     })
 
     -- LSP servers
-    vim.lsp.config("nixd", {})
+    vim.lsp.config("nixd", { capabilities = capabilities })
     vim.lsp.config("ts_ls", {
+      capabilities = capabilities,
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
       root_dir = vim.fs.root(0, { "package.json", "tsconfig.json", ".git" }),
       settings = {
@@ -30,15 +34,47 @@
       },
     })
     vim.lsp.config("tailwindcss", {
+      capabilities = capabilities,
       filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact" },
       root_dir = vim.fs.root(0, { "tailwind.config.js", "tailwind.config.ts", "postcss.config.js", "postcss.config.ts", ".git" }),
+    })
+    vim.lsp.config("html", {
+      capabilities = capabilities,
+      filetypes = { "html" },
+    })
+    vim.lsp.config("cssls", {
+      capabilities = capabilities,
+      filetypes = { "css", "scss" },
+    })
+    vim.lsp.config("eslint", {
+      capabilities = capabilities,
+      filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+      root_dir = vim.fs.root(0, { ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json", ".git" }),
+    })
+    vim.lsp.config("jsonls", {
+      capabilities = capabilities,
+      filetypes = { "json" },
     })
 
     -- Enable LSP servers on file open
     vim.api.nvim_create_autocmd("FileType", {
       pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
       callback = function(args)
-        vim.lsp.enable("ts_ls", "tailwindcss")
+        vim.lsp.enable("ts_ls", "tailwindcss", "eslint")
+      end,
+    })
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "html" },
+      callback = function(args)
+        vim.lsp.enable("html", "tailwindcss")
+      end,
+    })
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "css", "scss" },
+      callback = function(args)
+        vim.lsp.enable("cssls", "tailwindcss")
       end,
     })
 
