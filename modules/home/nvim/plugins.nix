@@ -137,6 +137,7 @@
         settings = {
           indent.char = "│";
           indent.tab_char = "│";
+          scope.enabled = false;
         };
       };
       neoscroll = {
