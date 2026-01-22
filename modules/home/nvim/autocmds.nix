@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 {
-   config.programs.nixvim.extraConfigVim = ''
-     " Colorscheme
+  config.programs.nixvim.extraConfigVim = ''
+    " Set leader key
+    let mapleader = " "
+
+    " Colorscheme
     colorscheme gruvbox-material
 
     " Emmet settings
@@ -36,50 +39,5 @@
 
     " Filetype detection
     autocmd BufNewFile,BufRead *.ejs set filetype=html
-
-    " Commands
-    command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, <bang>0)
-    command Reload :source $MYVIMRC
-
-    " Detect Indentation
-    augroup DetectIndent
-       autocmd!
-       autocmd BufReadPost *  DetectIndent
-    augroup END
-
-    " Restore cursor on exit
-    augroup RestoreCursorShapeOnExit
-        autocmd!
-        autocmd VimLeave * set guicursor=a:ver20-blinkwait400-blinkoff400-blinkon400
-    augroup END
-
-    " Tmux color fixes
-    if exists('$TMUX')
-        let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
-        let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
-    endif
-
-    " Rg command for FZF
-    command! -bang -nargs=* Rg
-      \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1,
-      \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
-
-    " Detect Indentation
-    augroup DetectIndent
-       autocmd!
-       autocmd BufReadPost *  DetectIndent
-    augroup END
-
-    " Restore cursor on exit
-    augroup RestoreCursorShapeOnExit
-        autocmd!
-        autocmd VimLeave * set guicursor=a:ver20-blinkwait400-blinkoff400-blinkon400
-    augroup END
-
-    " Tmux color fixes
-    if exists('$TMUX')
-        let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
-        let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
-    endif
   '';
 }

@@ -21,6 +21,7 @@
     fastfetch
     nodejs_24
     pnpm
+    biome
     go
     opencode
   ];

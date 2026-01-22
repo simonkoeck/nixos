@@ -2,6 +2,60 @@
 {
   config.programs.nixvim.keymaps = [
     {
+      key = "<leader>1";
+      action = "<Cmd>BufferGoto 1<CR>";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>2";
+      action = "<Cmd>BufferGoto 2<CR>";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>3";
+      action = "<Cmd>BufferGoto 3<CR>";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>4";
+      action = "<Cmd>BufferGoto 4<CR>";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>5";
+      action = "<Cmd>BufferGoto 5<CR>";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>6";
+      action = "<Cmd>BufferGoto 6<CR>";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>7";
+      action = "<Cmd>BufferGoto 7<CR>";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>8";
+      action = "<Cmd>BufferGoto 8<CR>";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>9";
+      action = "<Cmd>BufferGoto 9<CR>";
+      mode = "n";
+      options.silent = true;
+    }
+    {
       key = "<leader>m";
       action = ":";
       mode = "";
@@ -106,6 +160,18 @@
     {
       key = "<leader>ff";
       action = ":Rg<CR>";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "[b";
+      action = "<Cmd>BufferPrevious<CR>";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "]b";
+      action = "<Cmd>BufferNext<CR>";
       mode = "n";
       options.silent = true;
     }

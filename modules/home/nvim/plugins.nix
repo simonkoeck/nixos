@@ -114,10 +114,10 @@
             lua = [ "stylua" ];
             python = [ "ruff_fix" "ruff_format" "ruff_organize_imports" ];
             rust = [ "rustfmt" ];
-            javascript = [
-              { __unkeyed-1 = "prettierd"; }
-              { __unkeyed-1 = "prettier"; stop_after_first = true; }
-            ];
+            javascript = [ "biome" ];
+            typescript = [ "biome" ];
+            javascriptreact = [ "biome" ];
+            typescriptreact = [ "biome" ];
           };
         };
       };
