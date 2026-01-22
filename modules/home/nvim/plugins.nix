@@ -144,10 +144,15 @@
         enable = true;
         settings = {
           mappings = [
-            "<C-u>" "<C-d>"
-            "<C-b>" "<C-f>"
-            "<C-y>" "<C-e>"
-            "zt" "zz" "zb"
+            "<C-u>"
+            "<C-d>"
+            "<C-b>"
+            "<C-f>"
+            "<C-y>"
+            "<C-e>"
+            "zt"
+            "zz"
+            "zb"
           ];
           hide_cursor = true;
           stop_eof = true;
@@ -163,14 +168,39 @@
       };
       auto-session.enable = true;
 
+      luasnip = {
+        enable = true;
+        settings = {
+          vscode-snippet-paths = [
+            "${pkgs.vimPlugins.friendly-snippets}"
+          ];
+        };
+      };
+
       nvim-cmp = {
         enable = true;
         autoEnableSources = true;
         settings.sources = [
           { name = "nvim_lsp"; }
+          { name = "luasnip"; }
           { name = "path"; }
           { name = "buffer"; }
         ];
+        settings.snippet = {
+          expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+        };
+        settings.mapping = {
+          "<CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
+          "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i', 's'})";
+          "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i', 's'})";
+        };
+        settings.completion = {
+          completeopt = "menu,menuone,noinsert,noselect";
+          keyword_length = 1;
+        };
+        settings.view = {
+          entries = "custom";
+        };
       };
 
       lint = {
@@ -185,7 +215,12 @@
 
       nvim-lightbulb.enable = true;
 
-      trouble-nvim.enable = true;
+      trouble-nvim = {
+        enable = true;
+        settings = {
+          command = "Trouble";
+        };
+      };
 
       coc-nvim.enable = false;
 
@@ -210,6 +245,7 @@
           hash = "sha256-5l606k9jG1LKKwL5lCy45ZSWiEStbuqm1/tBQXOBpGA=";
         };
       })
+      friendly-snippets
     ];
   };
 }

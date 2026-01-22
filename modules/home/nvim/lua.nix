@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 {
   config.programs.nixvim.extraConfigLua = ''
+    -- Load snippets
+    require("luasnip.loaders.from_vscode").lazy_load()
+
     -- Format on save
     vim.api.nvim_create_autocmd("BufWritePre", {
       pattern = "*",

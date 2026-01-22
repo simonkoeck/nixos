@@ -313,37 +313,7 @@
     }
     {
       key = "<leader>xx";
-      action = "<cmd>Trouble diagnostics toggle<cr>";
-      mode = "n";
-      options.silent = true;
-    }
-    {
-      key = "<leader>xX";
-      action = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>";
-      mode = "n";
-      options.silent = true;
-    }
-    {
-      key = "<leader>cs";
-      action = "<cmd>Trouble symbols toggle focus=false<cr>";
-      mode = "n";
-      options.silent = true;
-    }
-    {
-      key = "<leader>cl";
-      action = "<cmd>Trouble lsp toggle focus=false win.position=right<cr>";
-      mode = "n";
-      options.silent = true;
-    }
-    {
-      key = "<leader>xL";
-      action = "<cmd>Trouble loclist toggle<cr>";
-      mode = "n";
-      options.silent = true;
-    }
-    {
-      key = "<leader>xQ";
-      action = "<cmd>Trouble qflist toggle<cr>";
+      action = "<cmd>TroubleToggle<cr>";
       mode = "n";
       options.silent = true;
     }
