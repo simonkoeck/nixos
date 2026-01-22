@@ -9,8 +9,12 @@
       end,
     })
 
-    -- Nix LSP setup
+    -- LSP servers
     vim.lsp.config("nixd", {})
+    vim.lsp.config("tailwindcss", {
+      filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+      root_dir = vim.fs.root(0, { "tailwind.config.js", "tailwind.config.ts", "postcss.config.js", "postcss.config.ts", ".git" }),
+    })
 
     -- LSP keymaps
     vim.api.nvim_create_autocmd("LspAttach", {

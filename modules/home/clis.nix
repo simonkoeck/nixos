@@ -26,5 +26,7 @@
     opencode
     nixd
     nixpkgs-fmt
+    prettier
+    tailwindcss-language-server
   ];
 }

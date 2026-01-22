@@ -94,6 +94,9 @@
             javascriptreact = [ "biome" ];
             typescriptreact = [ "biome" ];
             nix = [ "nixpkgs_fmt" ];
+            css = [ "prettier" ];
+            scss = [ "prettier" ];
+            html = [ "prettier" ];
           };
         };
       };
@@ -119,6 +122,12 @@
         };
         grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
           nix
+          css
+          html
+          javascript
+          typescript
+          tsx
+          scss
         ];
       };
 
@@ -132,6 +141,24 @@
       };
       neoscroll = {
         enable = true;
+        settings = {
+          mappings = [
+            "<C-u>" "<C-d>"
+            "<C-b>" "<C-f>"
+            "<C-y>" "<C-e>"
+            "zt" "zz" "zb"
+          ];
+          hide_cursor = true;
+          stop_eof = true;
+          respect_scrolloff = false;
+          cursor_scrolls_alone = true;
+          duration_multiplier = 0.35;
+          easing = "linear";
+          pre_hook = null;
+          post_hook = null;
+          performance_mode = false;
+          ignored_events = [ "WinScrolled" "CursorMoved" ];
+        };
       };
       auto-session.enable = true;
 
