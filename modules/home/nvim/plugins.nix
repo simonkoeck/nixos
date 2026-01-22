@@ -166,7 +166,7 @@
           ignored_events = [ "WinScrolled" "CursorMoved" ];
         };
       };
-      auto-session.enable = true;
+      auto-session.enable = false;
 
       luasnip = {
         enable = true;
