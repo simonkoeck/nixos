@@ -14,8 +14,8 @@
     udiskie
     unzip
     wget
-    gnumake 
-    wl-clipboard 
+    gnumake
+    wl-clipboard
     xdg-utils
     btop
     fastfetch
@@ -24,5 +24,7 @@
     biome
     go
     opencode
+    nixd
+    nixpkgs-fmt
   ];
 }

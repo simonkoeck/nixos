@@ -9,6 +9,9 @@
       end,
     })
 
+    -- Nix LSP setup
+    vim.lsp.config("nixd", {})
+
     -- LSP keymaps
     vim.api.nvim_create_autocmd("LspAttach", {
       callback = function(args)

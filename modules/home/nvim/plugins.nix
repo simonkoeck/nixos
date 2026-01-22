@@ -93,6 +93,7 @@
             typescript = [ "biome" ];
             javascriptreact = [ "biome" ];
             typescriptreact = [ "biome" ];
+            nix = [ "nixpkgs_fmt" ];
           };
         };
       };
@@ -116,6 +117,9 @@
           highlight.enable = true;
           indent.enable = true;
         };
+        grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+          nix
+        ];
       };
 
       web-devicons.enable = true;
