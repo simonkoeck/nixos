@@ -317,6 +317,24 @@
       mode = "n";
       options.silent = true;
     }
+    {
+      key = "<leader>cp";
+      action = "\"+y";
+      mode = "v";
+      options.silent = true;
+    }
+    {
+      key = "<leader>cp";
+      action = "\"+yy";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>cP";
+      action = "\"+Y";
+      mode = "n";
+      options.silent = true;
+    }
   ];
 
   config.programs.nixvim.keymapsLua = [ ];
