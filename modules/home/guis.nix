@@ -25,6 +25,8 @@
     geary
     # Insomnia
     insomnia
+    # DB
+    beekeeper-studio
   ];
 
   home.file = {
