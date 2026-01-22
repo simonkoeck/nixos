@@ -158,8 +158,26 @@
       options.silent = true;
     }
     {
+      key = "<leader>bc";
+      action = "<Cmd>BufferClose<CR>";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>bd";
+      action = "<Cmd>BufferClose<CR>";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>bP";
+      action = "<Cmd>BufferPin<CR>";
+      mode = "n";
+      options.silent = true;
+    }
+    {
       key = "<leader>ff";
-      action = ":Rg<CR>";
+      action = "<cmd>Telescope live_grep<CR>";
       mode = "n";
       options.silent = true;
     }
@@ -176,8 +194,62 @@
       options.silent = true;
     }
     {
-      key = "<leader>fr";
-      action = ":Farr<CR>";
+      key = "<leader>h";
+      action = "<C-w>h";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>j";
+      action = "<C-w>j";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>k";
+      action = "<C-w>k";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>l";
+      action = "<C-w>l";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>wv";
+      action = "<C-w>v";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>wh";
+      action = "<C-w>s";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>ws";
+      action = "<C-w>s";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>wd";
+      action = "<C-w>c";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>wc";
+      action = "<C-w>c";
+      mode = "n";
+      options.silent = true;
+    }
+    {
+      key = "<leader>wq";
+      action = "<C-w>c";
       mode = "n";
       options.silent = true;
     }
@@ -212,6 +284,12 @@
       options.silent = true;
     }
     {
+      key = "<leader>gc";
+      action.__raw = "function() require('telescope').extensions.conventional_commits.conventional_commits({ include_body_and_footer = true }) end";
+      mode = "n";
+      options.silent = true;
+    }
+    {
       key = "<leader>y";
       action.__raw = "function() vim.cmd('!xdg-open %') end";
       mode = "n";
@@ -235,62 +313,5 @@
     }
   ];
 
-  config.programs.nixvim.keymapsLua = [
-    {
-      mode = "n";
-      key = "<leader>h";
-      action.__raw = "function() vim.cmd('wincmd h') end";
-    }
-    {
-      mode = "n";
-      key = "<leader>j";
-      action.__raw = "function() vim.cmd('wincmd j') end";
-    }
-    {
-      mode = "n";
-      key = "<leader>k";
-      action.__raw = "function() vim.cmd('wincmd k') end";
-    }
-    {
-      mode = "n";
-      key = "<leader>l";
-      action.__raw = "function() vim.cmd('wincmd l') end";
-    }
-    {
-      mode = "n";
-      key = "<leader>wv";
-      action.__raw = "function() vim.cmd('vs') end";
-      options.silent = true;
-    }
-    {
-      mode = "n";
-      key = "<leader>wh";
-      action.__raw = "function() vim.cmd('split') end";
-      options.silent = true;
-    }
-    {
-      mode = "n";
-      key = "<leader>ws";
-      action.__raw = "function() vim.cmd('split') end";
-      options.silent = true;
-    }
-    {
-      mode = "n";
-      key = "<leader>wd";
-      action.__raw = "function() vim.cmd('close') end";
-      options.silent = true;
-    }
-    {
-      mode = "n";
-      key = "<leader>wc";
-      action.__raw = "function() vim.cmd('close') end";
-      options.silent = true;
-    }
-    {
-      mode = "n";
-      key = "<leader>wq";
-      action.__raw = "function() vim.cmd('close') end";
-      options.silent = true;
-    }
-  ];
+  config.programs.nixvim.keymapsLua = [ ];
 }

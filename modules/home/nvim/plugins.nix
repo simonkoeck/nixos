@@ -82,31 +82,6 @@
         };
       };
 
-      neoscroll = {
-        enable = true;
-        settings = {
-          mappings = [
-            "<C-u>"
-            "<C-d>"
-            "<C-b>"
-            "<C-f>"
-            "<C-y>"
-            "<C-e>"
-            "zt"
-            "zz"
-            "zb"
-          ];
-          hide_cursor = true;
-          stop_eof = true;
-          respect_scrolloff = false;
-          cursor_scrolls_alone = true;
-          duration_multiplier = 0.35;
-          easing = "linear";
-          performance_mode = false;
-          ignored_events = [ "WinScrolled" "CursorMoved" ];
-        };
-      };
-
       conform-nvim = {
         enable = true;
         settings = {
@@ -132,8 +107,8 @@
 
       commentary.enable = true;
       fugitive.enable = true;
-      vim-surround.enable = true;
-      vim-multiple-cursors.enable = true;
+      nvim-surround.enable = true;
+      vim-visual-multi.enable = true;
 
       treesitter = {
         enable = true;
@@ -144,7 +119,16 @@
       };
 
       web-devicons.enable = true;
-      indent-blankline.enable = true;
+      indent-blankline = {
+        enable = true;
+        settings = {
+          indent.char = "│";
+          indent.tab_char = "│";
+        };
+      };
+      neoscroll = {
+        enable = true;
+      };
       auto-session.enable = true;
 
       nvim-cmp = {
@@ -157,8 +141,6 @@
         ];
       };
 
-      none-ls.enable = false;
-
       lint = {
         enable = true;
         lintersByFt = {
@@ -167,35 +149,31 @@
         };
       };
 
-      treesitter-refactor = {
-        enable = true;
-        highlight_definitions.enable = true;
-      };
-
       nvim-lightbulb.enable = true;
 
       coc-nvim.enable = false;
-
-      fzf = {
-        enable = true;
-      };
 
       emmet.enable = true;
 
       system-copy.enable = true;
 
       markview.enable = true;
-
-      vim-suda.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
-      vim-javascript
-      far-vim
-      vim-prisma
       gruvbox-material
       nvim-lspconfig
       vim-wakatime
+      (pkgs.vimUtils.buildVimPlugin {
+        pname = "telescope-cc.nvim";
+        version = "2024-11-16";
+        src = pkgs.fetchFromGitHub {
+          owner = "olacin";
+          repo = "telescope-cc.nvim";
+          rev = "c3cf3489178f945e3efdf0bd15bfb8c353279755";
+          hash = "sha256-5l606k9jG1LKKwL5lCy45ZSWiEStbuqm1/tBQXOBpGA=";
+        };
+      })
     ];
   };
 }

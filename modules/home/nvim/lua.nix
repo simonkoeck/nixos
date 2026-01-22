@@ -28,5 +28,10 @@
         end
       end,
     })
+
+    -- Load telescope-cc extension
+    pcall(function()
+      require("telescope").load_extension("conventional_commits")
+    end)
   '';
 }

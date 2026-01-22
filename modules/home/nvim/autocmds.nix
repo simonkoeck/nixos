@@ -26,14 +26,6 @@
     let g:system_copy#copy_command='wl-copy'
     let g:system_copy#paste_command='wl-paste'
 
-    " FAR settings
-    let g:far#enable_undo=1
-    let g:far#source  = 'rg'
-    let g:far#mode_open = { "regex": 0, "case_sensitive": 1, "word": 0, "substitute": 0 }
-
-    " FZF settings
-    let g:fzf_vim = {}
-
     " Augment settings
     let g:augment_workspace_folders = ["~/dev/otark"]
 
