@@ -11,9 +11,27 @@
 
     -- LSP servers
     vim.lsp.config("nixd", {})
+    vim.lsp.config("ts_ls", {
+      filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+      root_dir = vim.fs.root(0, { "package.json", "tsconfig.json", ".git" }),
+      init_options = {
+        preferences = {
+          disableSuggestions = false,
+        },
+      },
+    })
     vim.lsp.config("tailwindcss", {
       filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact" },
       root_dir = vim.fs.root(0, { "tailwind.config.js", "tailwind.config.ts", "postcss.config.js", "postcss.config.ts", ".git" }),
+    })
+
+    -- Configure diagnostics to show virtual text
+    vim.diagnostic.config({
+      virtual_text = true,
+      signs = true,
+      underline = true,
+      update_in_insert = false,
+      severity_sort = true,
     })
 
     -- LSP keymaps
@@ -32,6 +50,24 @@
           vim.keymap.set("n", "gr", function()
             vim.lsp.buf.references()
           end, { buffer = bufnr, desc = "Go to references", silent = true })
+        end
+
+        if client.server_capabilities.hoverProvider then
+          vim.keymap.set("n", "K", function()
+            vim.lsp.buf.hover()
+          end, { buffer = bufnr, desc = "Show hover info", silent = true })
+        end
+
+        if client.server_capabilities.codeActionProvider then
+          vim.keymap.set("n", "<leader>ca", function()
+            vim.lsp.buf.code_action()
+          end, { buffer = bufnr, desc = "Code actions", silent = true })
+        end
+
+        if client.server_capabilities.renameProvider then
+          vim.keymap.set("n", "<leader>rn", function()
+            vim.lsp.buf.rename()
+          end, { buffer = bufnr, desc = "Rename", silent = true })
         end
       end,
     })

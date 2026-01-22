@@ -177,10 +177,14 @@
         lintersByFt = {
           javascript = [ "eslint" ];
           typescript = [ "eslint" ];
+          typescriptreact = [ "eslint" ];
+          javascriptreact = [ "eslint" ];
         };
       };
 
       nvim-lightbulb.enable = true;
+
+      trouble-nvim.enable = true;
 
       coc-nvim.enable = false;
 
