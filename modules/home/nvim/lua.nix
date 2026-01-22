@@ -14,15 +14,36 @@
     vim.lsp.config("ts_ls", {
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
       root_dir = vim.fs.root(0, { "package.json", "tsconfig.json", ".git" }),
-      init_options = {
-        preferences = {
-          disableSuggestions = false,
+      settings = {
+        typescript = {
+          inlayHints = {
+            includeInlayParameterNameHints = "all",
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+          },
         },
       },
     })
     vim.lsp.config("tailwindcss", {
       filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact" },
       root_dir = vim.fs.root(0, { "tailwind.config.js", "tailwind.config.ts", "postcss.config.js", "postcss.config.ts", ".git" }),
+    })
+
+    -- Enable LSP servers on file open
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+      callback = function(args)
+        vim.lsp.enable("ts_ls", "tailwindcss")
+      end,
+    })
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "nix" },
+      callback = function(args)
+        vim.lsp.enable("nixd")
+      end,
     })
 
     -- Configure diagnostics to show virtual text

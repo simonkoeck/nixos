@@ -28,5 +28,6 @@
     nixpkgs-fmt
     prettier
     tailwindcss-language-server
+    typescript-language-server
   ];
 }
