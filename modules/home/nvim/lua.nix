@@ -145,7 +145,11 @@
     })
 
     -- Configure opencode.nvim
-    vim.g.opencode_opts = {}
+    vim.g.opencode_opts = {
+        provider ={
+            enabled = "tmux"
+        } 
+    }
 
     vim.o.autoread = true
 
