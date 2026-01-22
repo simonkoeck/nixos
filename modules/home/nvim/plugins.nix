@@ -126,7 +126,9 @@
         enable = true;
       };
 
-      barbar.enable = false;
+      barbar = {
+        enable = true;
+      };
 
       commentary.enable = true;
       fugitive.enable = true;
