@@ -75,12 +75,6 @@
         };
       };
 
-      mini = {
-        enable = true;
-        modules = {
-          move = { };
-        };
-      };
 
       conform-nvim = {
         enable = true;
