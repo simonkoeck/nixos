@@ -9,6 +9,7 @@
     ./hyprlock.nix
     ./hypridle.nix
     ./variables.nix
+    ./cursor.nix
     ./monitors
   ];
 }

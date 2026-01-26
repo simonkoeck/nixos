@@ -21,6 +21,7 @@
     };
 
     general = {
+      allow_tearing = true;
       "$mainMod" = "SUPER";
       layout = "dwindle";
       gaps_in = 7;
