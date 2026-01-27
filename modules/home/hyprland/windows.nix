@@ -33,6 +33,10 @@
       "workspace special:gather, class:(Gather)"
       # YouTube Music
       "workspace special:music, initialTitle:(YouTube Music)"
+
+      "workspace 9 silent, class:^(cs2)$"
+      "immediate, class:^(cs2)$"
+      "fullscreen, class:^(cs2)$"
     ];
 
     layerrule = [
@@ -50,6 +54,7 @@
       # Disable gaps in fullscreen
       "f[0],rounding:false,bordersize:0,gapsout:0"
       "f[1],rounding:false,bordersize:0,gapsout:0"
+      "9, monitor:DP-11"
     ];
   };
 }

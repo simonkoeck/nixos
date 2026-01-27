@@ -174,10 +174,17 @@
       blink-cmp = {
         enable = true;
         settings = {
-          keymap = { preset = "default"; };
+          keymap = {
+            "<C-k>" = [ "show" "show_documentation" "hide_documentation" ];
+            "<C-e>" = [ "hide" "fallback" ];
+            "<CR>" = [ "accept" "fallback" ];
+            "<Tab>" = [ "snippet_forward" "fallback" ];
+            "<S-Tab>" = [ "snippet_backward" "fallback" ];
+          };
           appearance.nerd_font_variant = "mono";
           completion.documentation.auto_show = false;
           sources.default = [ "lsp" "path" "snippets" "buffer" ];
+          completion.menu.draw.columns = [ [ "kind_icon" ] [ "label" "label_description" ] [ "source_name" ] ];
         };
       };
 

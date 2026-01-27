@@ -22,7 +22,15 @@
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
       root_dir = vim.fs.root(0, { "package.json", "tsconfig.json", ".git" }),
       settings = {
+        javascript = {
+          suggest = {
+            autoImports = true,
+          },
+        },
         typescript = {
+          suggest = {
+            autoImports = true,
+          },
           inlayHints = {
             includeInlayParameterNameHints = "all",
             includeInlayFunctionParameterTypeHints = true,

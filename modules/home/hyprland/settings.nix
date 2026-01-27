@@ -23,6 +23,7 @@
     general = {
       "$mainMod" = "SUPER";
       layout = "dwindle";
+      allow_tearing = true;
       gaps_in = 7;
       gaps_out = 7;
       border_size = 2;
