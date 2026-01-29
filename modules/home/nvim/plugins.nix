@@ -232,6 +232,16 @@
       })
       opencode-nvim
       friendly-snippets
+      (pkgs.vimUtils.buildVimPlugin {
+        pname = "claude-code.nvim";
+        version = "2025-01-28";
+        src = pkgs.fetchFromGitHub {
+          owner = "greggh";
+          repo = "claude-code.nvim";
+          rev = "c9a31e51069977edaad9560473b5d031fcc5d38b";
+          hash = "sha256-ZEIPutxhgyaAhq+fJw1lTO781IdjTXbjKy5yKgqSLjM=";
+        };
+      })
     ];
 
     extraPackages = with pkgs; [

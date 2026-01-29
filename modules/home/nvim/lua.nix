@@ -145,6 +145,10 @@
       require("telescope").load_extension("conventional_commits")
     end)
 
+    -- Configure claude-code.nvim
+    require("claude-code").setup()
+    vim.keymap.set({ "n", "t" }, "<leader>cc", "<cmd>ClaudeCode<cr>", { desc = "Toggle Claude Code" })
+
     -- Configure opencode.nvim
     vim.g.opencode_opts = {
         provider ={
