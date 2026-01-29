@@ -145,13 +145,6 @@
       require("telescope").load_extension("conventional_commits")
     end)
 
-    -- Configure snacks.nvim
-    require("snacks").setup({
-      input = {},
-      picker = {},
-      terminal = {},
-    })
-
     -- Configure opencode.nvim
     vim.g.opencode_opts = {
         provider ={

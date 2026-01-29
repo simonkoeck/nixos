@@ -230,7 +230,6 @@
           hash = "sha256-5l606k9jG1LKKwL5lCy45ZSWiEStbuqm1/tBQXOBpGA=";
         };
       })
-      snacks-nvim
       opencode-nvim
       friendly-snippets
     ];
