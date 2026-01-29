@@ -29,5 +29,6 @@
     prettier
     tailwindcss-language-server
     typescript-language-server
+    claude-code
   ];
 }
