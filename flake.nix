@@ -11,7 +11,6 @@
     };
 
     # Third party
-    vicinae.url = "github:vicinaehq/vicinae";
     minegrub.url = "github:Lxtharia/minegrub-theme";
     mineplymouth.url = "github:nikp123/minecraft-plymouth-theme";
     hyprdynamicmonitors.url = "github:fiffeek/hyprdynamicmonitors";
