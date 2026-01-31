@@ -35,6 +35,9 @@
       "workspace 9 silent, match:class ^(cs2)$"
       "immediate on, match:class ^(cs2)$"
       "fullscreen on, match:class ^(cs2)$"
+
+      "border_size 0, match:float 0, match:workspace f[1]"
+      "rounding 0, match:float 0, match:workspace f[1]"
     ];
 
     layerrule = [
@@ -47,8 +50,7 @@
 
     workspace = [
       # Disable gaps in fullscreen
-      "f[0],rounding:false,bordersize:0,gapsout:0"
-      "f[1],rounding:false,bordersize:0,gapsout:0"
+      "f[1], gapsout:0, gapsin:0"
       "9, monitor:DP-11"
     ];
   };
