@@ -1,6 +1,8 @@
 { ... }:
 {
   wayland.windowManager.hyprland.settings = {
+    "$mainMod" = "SUPER";
+
     input = {
       kb_layout = "de";
       numlock_by_default = true;
@@ -21,7 +23,6 @@
     };
 
     general = {
-      "$mainMod" = "SUPER";
       layout = "dwindle";
       allow_tearing = true;
       gaps_in = 7;
