@@ -32,9 +32,6 @@
   i18n.defaultLocale = "en_US.UTF-8";
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [
-      "beekeeper-studio-5.3.4"
-    ];
   };
   system.stateVersion = "24.05";
 }
