@@ -233,13 +233,13 @@
       opencode-nvim
       friendly-snippets
       (pkgs.vimUtils.buildVimPlugin {
-        pname = "claude-code.nvim";
-        version = "2025-01-28";
+        pname = "claudecode.nvim";
+        version = "2025-01-29";
         src = pkgs.fetchFromGitHub {
-          owner = "greggh";
-          repo = "claude-code.nvim";
-          rev = "c9a31e51069977edaad9560473b5d031fcc5d38b";
-          hash = "sha256-ZEIPutxhgyaAhq+fJw1lTO781IdjTXbjKy5yKgqSLjM=";
+          owner = "coder";
+          repo = "claudecode.nvim";
+          rev = "aa9a5cebebdbfa449c1c5ff229ba5d98e66bafed";
+          hash = "sha256-B6BA+3h7RLmk+zk6O365DmY06ALdbbkFBmOaRH9muog=";
         };
       })
     ];

@@ -145,9 +145,19 @@
       require("telescope").load_extension("conventional_commits")
     end)
 
-    -- Configure claude-code.nvim
-    require("claude-code").setup()
-    vim.keymap.set({ "n", "t" }, "<leader>cc", "<cmd>ClaudeCode<cr>", { desc = "Toggle Claude Code" })
+    -- Configure claudecode.nvim
+    require("claudecode").setup({
+      terminal = {
+        provider = "native",
+      },
+    })
+    vim.keymap.set({ "n", "t" }, "<leader>cc", "<cmd>ClaudeCode<cr>", { desc = "Toggle Claude" })
+    vim.keymap.set({ "n", "t" }, "<leader>cf", "<cmd>ClaudeCodeFocus<cr>", { desc = "Focus Claude" })
+    vim.keymap.set("v", "<leader>cs", "<cmd>ClaudeCodeSend<cr>", { desc = "Send selection to Claude" })
+    vim.keymap.set("n", "<leader>cm", "<cmd>ClaudeCodeSelectModel<cr>", { desc = "Select Claude model" })
+    vim.keymap.set("n", "<leader>cy", "<cmd>ClaudeCodeDiffAccept<cr>", { desc = "Accept Claude diff" })
+    vim.keymap.set("n", "<leader>cn", "<cmd>ClaudeCodeDiffDeny<cr>", { desc = "Deny Claude diff" })
+    vim.keymap.set("n", "<leader>ca", "<cmd>ClaudeCodeTreeAdd<cr>", { desc = "Add file to Claude" })
 
     -- Configure opencode.nvim
     vim.g.opencode_opts = {
