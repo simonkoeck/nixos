@@ -17,10 +17,10 @@
   };
   authfill = buildFirefoxXpiAddon rec {
     pname = "authfill";
-    version = "1.0.0";
+    version = "1.2.0";
     addonId = "extension@authfill.com";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4519129/${pname}-${version}.xpi";
-    sha256 = "sha256-gEOCWPpnFpcV9wBg8raFmg/kyJovA+ltHxwav3SmdB0=";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4683108/${pname}-${version}.xpi";
+    sha256 = "sha256-R+mvL33hQJQlh9RfQn4JUMj+p5mVuD1XWVii+uY7xmI=";
     meta = with lib;
       {
         homepage = "https://github.com/authfill/authfill";

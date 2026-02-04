@@ -91,6 +91,7 @@
             css = [ "prettier" ];
             scss = [ "prettier" ];
             html = [ "prettier" ];
+            prisma = [ "prettier" ];
           };
         };
       };
@@ -122,6 +123,7 @@
           typescript
           tsx
           scss
+          prisma
         ];
       };
 
@@ -250,6 +252,7 @@
       nixd
       vscode-langservers-extracted
       eslint
+      prisma-language-server
     ];
   };
 }

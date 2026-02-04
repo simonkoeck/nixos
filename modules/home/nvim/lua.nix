@@ -57,11 +57,15 @@
     vim.lsp.config("eslint", {
       capabilities = capabilities,
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-      root_dir = vim.fs.root(0, { ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json", ".git" }),
+      root_dir = vim.fs.root(0, { ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json", "eslint.config.mjs", ".git" }),
     })
     vim.lsp.config("jsonls", {
       capabilities = capabilities,
       filetypes = { "json" },
+    })
+    vim.lsp.config("prismals", {
+      capabilities = capabilities,
+      filetypes = { "prisma" },
     })
 
     -- Enable LSP servers on file open
@@ -90,6 +94,13 @@
       pattern = { "nix" },
       callback = function(args)
         vim.lsp.enable("nixd")
+      end,
+    })
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "prisma" },
+      callback = function(args)
+        vim.lsp.enable("prismals")
       end,
     })
 

@@ -30,5 +30,7 @@
     tailwindcss-language-server
     typescript-language-server
     claude-code
+    # Git worktree management
+    wtp
   ];
 }
