@@ -26,6 +26,9 @@
   environment.systemPackages = with pkgs; [
     wget
     git
+    bubblewrap
+    socat
+    sandbox-runtime
   ];
 
   time.timeZone = "Europe/Vienna";

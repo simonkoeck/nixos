@@ -5,9 +5,10 @@
     ./scripts/scripts.nix
 
     # Groups
-    ./clis.nix # clis 
-    ./guis.nix # clis 
+    ./clis.nix # clis
+    ./guis.nix # clis
 
+    ./claude-code.nix # claude code settings
     ./fzf.nix # fuzzy finder
     ./git.nix # version control
     ./gnome.nix # gnome apps
