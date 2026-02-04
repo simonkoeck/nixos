@@ -4,13 +4,14 @@
     overlays = [
       (
         final: prev:
-        (import ../../pkgs {
-          inherit inputs;
-          inherit pkgs;
-          inherit (prev) system;
-        })
+          (import ../../pkgs {
+            inherit inputs;
+            inherit pkgs;
+            inherit (prev) system;
+          })
       )
       inputs.nur.overlays.default
+      inputs.claude-code.overlays.default
     ];
   };
 }
