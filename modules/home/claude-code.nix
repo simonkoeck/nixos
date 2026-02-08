@@ -22,6 +22,8 @@ in
         "security-guidance@claude-plugins-official" = true;
         "typescript-lsp@claude-plugins-official" = true;
         "figma@claude-plugins-official" = true;
+        "frontend-design@claude-plugins-official" = true;
+        "feature-dev@claude-plugins-official" = true;
       };
       sandbox = {
         seccomp = {

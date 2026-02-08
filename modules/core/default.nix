@@ -23,5 +23,6 @@
     ./podman-desktop.nix
     ./firefoxpwa.nix
     ./gather.nix
+    ./g2.nix
   ];
 }

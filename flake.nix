@@ -20,6 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gather-linux.url = "github:simonkoeck/gather-linux";
+    g2.url = "github:simonkoeck/g2";
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,7 +28,7 @@
   };
 
   outputs =
-    { nixpkgs, self, gather-linux, ... }@inputs:
+    { nixpkgs, self, gather-linux, g2, ... }@inputs:
     let
       username = "simon";
       system = "x86_64-linux";
@@ -48,7 +49,7 @@
           ];
           specialArgs = {
             host = "zephyrus";
-            inherit self inputs username gather-linux;
+            inherit self inputs username gather-linux g2;
           };
         };
       };
